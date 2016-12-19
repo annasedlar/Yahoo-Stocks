@@ -10,13 +10,22 @@ $(document).ready(function(){
  		//getjson(where to go, what to do)
  		$.getJSON(url, function(data){
  			var stockInfo = data.query.results.quote;
+ 			console.log(stockInfo);
+ 			//check to see if change is + or -
+ 			if(stockInfo.Change.indexOf('+') > -1){
+ 				//there is a '+' somewhere in this string
+ 				var classChange = "success";
+ 			}else{
+ 				//there is not a '+' in this string (negative daily change)
+ 				var classChange = "danger";
+ 			}
  			var newHTML = '';
  			newHTML += '<tr>';
  				newHTML += '<td>' +stockInfo.Symbol+ '</td>';
  				newHTML += '<td>' +stockInfo.Name+ '</td>';
  				newHTML += '<td>' +stockInfo.Ask+ '</td>';
  				newHTML += '<td>' +stockInfo.Bid+ '</td>';
- 				newHTML += '<td>' +stockInfo.Change+ '</td>';
+ 				newHTML += '<td class="' +classChange+ '">' +stockInfo.Change+ '</td>';
  			newHTML +='</tr>';
  			console.log(newHTML);
  			$('#stock-body').html(newHTML);
