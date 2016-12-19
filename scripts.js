@@ -10,8 +10,18 @@ $(document).ready(function(){
  		//getjson(where to go, what to do)
  		$.getJSON(url, function(data){
  			var stockInfo = data.query.results.quote;
+ 			var newHTML = '';
+ 			newHTML += '<tr>';
+ 				newHTML += '<td>' +stockInfo.Symbol+ '</td>';
+ 				newHTML += '<td>' +stockInfo.Name+ '</td>';
+ 				newHTML += '<td>' +stockInfo.Ask+ '</td>';
+ 				newHTML += '<td>' +stockInfo.Bid+ '</td>';
+ 				newHTML += '<td>' +stockInfo.Change+ '</td>';
+ 			newHTML +='</tr>';
+ 			console.log(newHTML);
+ 			$('#stock-body').html(newHTML);
  		});
- 		console.log("where is JS?");
+ 		// console.log("where is JS?");
 
 	});
 });
