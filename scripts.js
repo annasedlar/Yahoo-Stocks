@@ -8,23 +8,8 @@ $(document).ready(function(){
 	// 	$('#stock-body').append(htmlToPlot);
 	// }
 
-		var url = `http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20("${userStocksSaved}")%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json`;
-		$.getJSON(url, function(dataJSGotIfAny){
-			var stockInfo = dataJSGotIfAny.query.results.quote;
-			if(dataJSGotIfAny.query.count == 1){
-				// we know this is a single object becaues theres only 1
-				var htmlToPlot = buildStockRow(stockInfo);
-				$('#stock-body').append(htmlToPlot);				
-			}else{
-				// we know this is an array, because the count isnt 1
-				for(let i = 0; i < stockInfo.length; i++){
-					var htmlToPlot = buildStockRow(stockInfo[i]);
-					$('#stock-body').append(htmlToPlot);
-				}
-			}
-			// console.log("I'm back!");
-		});
-
+	var url = `http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20("${userStocksSaved}")%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json`;
+	newest(url);
 
 	$('.yahoo-form').submit(function(){
 		// Stop the form from submitting (default action)
@@ -33,32 +18,13 @@ $(document).ready(function(){
 		var symbol = $('#symbol').val();
 		localStorage.setItem("userStocks", symbol);
 
-		// console.log(symbol);
-
 		// Dynamically build the URL to use the symbol(s) the user requested
 		var url = `http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20("${symbol}")%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json`;
-
-		console.log(url);
 		// getJSON, param1 = where to go, param2 = what to do
-		$.getJSON(url, function(dataJSGotIfAny){
-			var stockInfo = dataJSGotIfAny.query.results.quote;
-			if(dataJSGotIfAny.query.count == 1){
-				// we know this is a single object becaues theres only 1
-				var htmlToPlot = buildStockRow(stockInfo);
-				$('#stock-body').append(htmlToPlot);				
-			}else{
-				// we know this is an array, because the count isnt 1
-				for(let i = 0; i < stockInfo.length; i++){
-					var htmlToPlot = buildStockRow(stockInfo[i]);
-					$('#stock-body').append(htmlToPlot);
-				}
-			}
-			// console.log("I'm back!");
-		});
-		// console.log("Where is JS?");
-
+		newest(url)
 	});
 });
+
 function buildStockRow(stock){
 	// check to see if change is + or -
 	console.log(stock);
@@ -81,12 +47,23 @@ function buildStockRow(stock){
 	return newHTML;
 }
 
+function newest(url){
+	$.getJSON(url, function(dataJSGotIfAny){
+	var stockInfo = dataJSGotIfAny.query.results.quote;
+	if(dataJSGotIfAny.query.count == 1){
+		// we know this is a single object becaues theres only 1
+		var htmlToPlot = buildStockRow(stockInfo);
+		$('#stock-body').append(htmlToPlot);				
+	}else{
+		// we know this is an array, because the count isnt 1
+		for(let i = 0; i < stockInfo.length; i++){
+			var htmlToPlot = buildStockRow(stockInfo[i]);
+			$('#stock-body').append(htmlToPlot);
+		}
+	}
+	});
 
-
-
-
-
-
+}
 
 
 
