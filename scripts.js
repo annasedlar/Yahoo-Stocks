@@ -1,5 +1,3 @@
-
-// WAIT FOR THE DOM!!!
 $(document).ready(function(){
 
 	// See if the user has any stored stocks. If so, then load them
@@ -82,3 +80,18 @@ function buildStockRow(stock){
 	// $('#stock-body').append(newHTML);
 	return newHTML;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

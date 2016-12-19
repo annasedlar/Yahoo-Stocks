@@ -1,3 +1,50 @@
+body{
+	/* hide everything outside of body */
+	/* overflow: hidden;  *//*comment this out to be able to scross horizontally*/
+}
+
+.container-fluid{
+	font-size: 50px;
+	color: white;
+	text-align: center;
+	text-shadow: 5px 1px black;
+
+}
 form{
-	padding: 40px;
+	padding: 20px;
+}
+
+#pages{
+	/* make the pages div twice the width of the screen */
+	width:  200vw;
+}
+
+#page1, #page2{
+	width: 100vw;
+	float:  left;
+	height:  100vh;
+	position: relative;
+	background-color: #55997a;
+}
+.col-sm-12{
+	background-color: white;
+}
+
+#arrow1, #arrow2{
+	position: absolute;
+	top: 50%;
+	color: white;	
+	font-size: 100px;
+	height: 300px;
+	width: 300px;
+	text-shadow: 5px 1px black;
+	z-index: 2;
+}
+
+#arrow1{
+	right: 5px;
+}
+
+#arrow2{
+	left: 10px;
 }
