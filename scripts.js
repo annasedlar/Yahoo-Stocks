@@ -10,27 +10,41 @@ $(document).ready(function(){
  		//getjson(where to go, what to do)
  		$.getJSON(url, function(data){
  			var stockInfo = data.query.results.quote;
- 			console.log(stockInfo);
- 			//check to see if change is + or -
- 			if(stockInfo.Change.indexOf('+') > -1){
- 				//there is a '+' somewhere in this string
- 				var classChange = "success";
- 			}else{
- 				//there is not a '+' in this string (negative daily change)
- 				var classChange = "danger";
+ 			// console.log(stockInfo);  //will return an array of objects if more than one query
+ 			if(data.query.count == 1){
+ 				buildStockRow(stockInfo);
+ 				var htmlToPlot=buildStockRow(stockInfo);
+ 				$('#stock-body').append(htmlToPlot);
+ 			} else {
+ 				for(var i = 0; i < stockInfo.length; i++){
+ 					var htmlToPlot = buildStockRow(stockInfo[i]);
+ 					$('#stock-body').append(htmlToPlot);
+ 				}
  			}
- 			var newHTML = '';
- 			newHTML += '<tr>';
- 				newHTML += '<td>' +stockInfo.Symbol+ '</td>';
- 				newHTML += '<td>' +stockInfo.Name+ '</td>';
- 				newHTML += '<td>' +stockInfo.Ask+ '</td>';
- 				newHTML += '<td>' +stockInfo.Bid+ '</td>';
- 				newHTML += '<td class="' +classChange+ '">' +stockInfo.Change+ '</td>';
- 			newHTML +='</tr>';
- 			console.log(newHTML);
- 			$('#stock-body').html(newHTML);
- 		});
- 		// console.log("where is JS?");
 
+ 		});
+
+
+ 		function buildStockRow(stock){
+	 			//check to see if change is + or -
+	 				if(stock.Change.indexOf('+') > -1){
+		 				//there is a '+' somewhere in this string
+		 				var classChange = "success";
+		 				}else{
+		 				//there is not a '+' in this string (negative daily change)
+		 					var classChange = "danger";
+		 				}
+
+		 				var newHTML = '';
+		 				newHTML += '<tr>';
+			 				newHTML += '<td>' +stock.Symbol+ '</td>';
+			 				newHTML += '<td>' +stock.Name+ '</td>';
+			 				newHTML += '<td>' +stock.Ask+ '</td>';
+			 				newHTML += '<td>' +stock.Bid+ '</td>';
+			 				newHTML += '<td class="' +classChange+ '">' +stock.Change+ '</td>';
+		 				newHTML +='</tr>';
+
+		 				return newHTML;
+		 			}
 	});
 });
