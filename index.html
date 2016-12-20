@@ -10,10 +10,11 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 <html>
 <head>
 	<title>AJAX Practice with Yahoo!</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 	<script type="text/javascript" src="scripts.js"></script>
@@ -25,7 +26,7 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 <div id="pages">
 <!-- main page displayed -->
 	<div id="page1">
-	<div id="arrow1"> >>> </div>
+		<div id="arrow1"> >>> </div>
 		<div class="container-fluid">Yahoo! Stock Checker</div>
 		<div class="container">
 			<div class="row">
@@ -37,6 +38,8 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 							<input type="text" class="form-control" id="symbol" placeholder="Enter symbols, separate with comma">
 						</div>
 						<button type="submit" class="btn btn-primary">Get my stock quotes</button>
+						<button type="button" class="btn btn-info">Save this search</button>
+						<button type="button" class="btn btn-danger">Remove this search</button>
 					</form>
 
 					<table class="table table-striped table-bordered">
@@ -49,7 +52,7 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 								<th>Daily Change</th>
 						</thead>
 
-						<tbody id="stock-body">
+						<tbody id="stock-body-1">
 							<tr>
 								<td></td>
 								<td></td>
