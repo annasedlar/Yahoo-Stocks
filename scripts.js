@@ -1,6 +1,16 @@
 $(document).ready(function(){
 
 
+$('#arrow1').click(function(){
+	$('#page1, #page2').css({
+		'right': '100vw'
+	});
+})
+$('#arrow2').click(function(){
+	$('#page1, #page2').css({
+		'right':'0vw'
+	});
+})
 	var searchedStocks = [];
 	// See if the user has any stored stocks. If so, then load them
 	var userStocksSaved = localStorage.getItem('userStocks');

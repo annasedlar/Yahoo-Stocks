@@ -14,7 +14,7 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 	<script type="text/javascript" src="scripts.js"></script>
@@ -32,10 +32,10 @@ HTTP:// everything after a ? is called a variable and the (yahoo) API can use. U
 			<div class="row">
 				<div class = "col-sm-12">
 					<h1>What stock(s) do you want to search for?</h1>
-					<form class="yahoo-form form-inline">
+					<form class="yahoo-form form-inline">   <!-- submit handler (js) can ONLY be used on a FORM element-->
 						<label class="sr-only">Stock Symbol</label>
 						<div class="input-group">
-							<input type="text" class="form-control" id="symbol" placeholder="Enter symbols, separate with comma">
+							<input type="text" class="form-control" id="symbol" placeholder="Separate symbols with commas">
 						</div>
 						<button type="submit" class="btn btn-primary">Get my stock quotes</button>
 						<button type="button" class="btn btn-info">Save this search</button>

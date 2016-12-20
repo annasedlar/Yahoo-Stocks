@@ -14,9 +14,13 @@ form{
 	padding: 20px;
 }
 
+#symbol{
+	width: 250px;
+}
 #pages{
 	/* make the pages div twice the width of the screen */
 	width:  200vw;
+	transition: all 3s;
 }
 
 #page1, #page2{
